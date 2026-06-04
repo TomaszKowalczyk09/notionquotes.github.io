@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Moje Cytaty</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: transparent;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #191919;
+                --text-color: #ffffff;
+            }
+        }
+        #quote {
+            font-size: 24px;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="quote">Ładowanie...</div>
+
+    <script>
+        const quotes = [
+            "Musisz wygrać i panować - albo przegrać w nędzy żyć. Cierpieć albo triumfować, młotem lub kowadłem być!",
+            "Cokolwiek zamierzasz zrobić, o czymkolwiek marzysz, zacznij działać. Śmiałość zawiera w sobie geniusz, siłę i magię.",
+            "Świat jest okrągły, a to, co wydaje się końcem, może być również początkiem.",
+            "Życie to raj, do którego klucze są w naszych rękach.",
+            "Prawda nic nie traci na tym, że ktoś jej nie dostrzega.",
+            "Największą wadą człowieka jest to, że ma tak wiele drobnych wad."
+        ];
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById("quote").innerText = quotes[randomIndex];
+    </script>
+</body>
+</html>
