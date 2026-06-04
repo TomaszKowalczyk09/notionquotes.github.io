@@ -11,35 +11,51 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: transparent;
+            background-color: #191919;
+            color: #ffffff;
         }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #191919;
-                --text-color: #ffffff;
-            }
+        #quote-container {
+            text-align: center;
+            padding: 20px;
+            max-width: 80%;
         }
         #quote {
             font-size: 24px;
-            text-align: center;
-            padding: 20px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+        #author {
+            font-size: 18px;
+            color: #9b9b9b;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
-    <div id="quote">Ładowanie...</div>
+    <div id="quote-container">
+        <div id="quote">Ładowanie...</div>
+        <div id="author"></div>
+    </div>
 
     <script>
-        const quotes = [
-            "Musisz wygrać i panować - albo przegrać w nędzy żyć. Cierpieć albo triumfować, młotem lub kowadłem być!",
-            "Cokolwiek zamierzasz zrobić, o czymkolwiek marzysz, zacznij działać. Śmiałość zawiera w sobie geniusz, siłę i magię.",
-            "Świat jest okrągły, a to, co wydaje się końcem, może być również początkiem.",
-            "Życie to raj, do którego klucze są w naszych rękach.",
-            "Prawda nic nie traci na tym, że ktoś jej nie dostrzega.",
-            "Największą wadą człowieka jest to, że ma tak wiele drobnych wad."
+        const quotesList = [
+            { text: "Musisz wygrać i panować - albo przegrać w nędzy żyć. Cierpieć albo triumfować, młotem lub kowadłem być!", author: "Johann Wolfgang von Goethe" },
+            { text: "Cokolwiek zamierzasz zrobić, o czymkolwiek marzysz, zacznij działać. Śmiałość zawiera w sobie geniusz, siłę i magię.", author: "Johann Wolfgang von Goethe" },
+            { text: "Świat jest okrągły, a to, co wydaje się końcem, może być również początkiem.", author: "Friedrich Schiller" },
+            { text: "Życie to raj, do którego klucze są w naszych rękach.", author: "Fiodor Dostojewski" },
+            { text: "Prawda nic nie traci na tym, że ktoś jej nie dostrzega.", author: "Friedrich Schiller" },
+            { text: "Największą wadą człowieka jest to, że ma tak wiele drobnych wad.", author: "Johann Wolfgang von Goethe" }
         ];
-        const randomIndex = Math.floor(Math.random() * quotes.length);
-        document.getElementById("quote").innerText = quotes[randomIndex];
+
+        function changeQuote() {
+            const randomIndex = Math.floor(Math.random() * quotesList.length);
+            const selected = quotesList[randomIndex];
+            document.getElementById("quote").innerText = selected.text;
+            document.getElementById("author").innerText = selected.author;
+        }
+
+        changeQuote();
+        setInterval(changeQuote, 30000);
     </script>
 </body>
 </html>
